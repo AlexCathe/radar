@@ -6,8 +6,6 @@ import { Radar } from './entities/radar';
 import { setConstantValue } from 'typescript';
 import { Report } from './entities/report';
 import { XmlChecker } from './checker/XmlChecker';
-import * as fs from 'react-native-fs';
-
 
 function App() {
   var radars:Array<Radar>
@@ -36,10 +34,17 @@ function App() {
       });
     }
     console.log(reportArray)
+    const fs = require('fs');
+    const {parseString, Builder} = require('xml2json');
+    
+    const dataXml = fs.readFileSync('./data/radar.xml').toString();
+    parseString(dataXml, function(err: Object, data: Object) {
+      console.dir(data)
+    })
+  };
 
     
     // XmlChecker.checkXmlFormat(dataXml)
-  }
 
   
   
