@@ -1,12 +1,12 @@
 import { Vehicle } from "./vehicle";
 
 export class Report {
-    speed: string|null;
+    speed: number|null;
     date: Date;
     evidenceUrl: string|null;
     vehicle: Vehicle;
     
-    constructor(speed: string|null, date: Date, vehicle: Vehicle, evidenceUrl: string|null) {
+    constructor(speed: number|null, date: Date, vehicle: Vehicle, evidenceUrl: string|null) {
             this.speed = speed;
             this.date = date;
             this.evidenceUrl = evidenceUrl;
