@@ -12,11 +12,8 @@ export class Report {
             this.evidenceUrl = evidenceUrl;
             this.vehicle = vehicle;
     }
+}
 
-    getReportByDate(date: Date): boolean {
-        if (date.getTime() === this.date.getTime()) {
-            return true;
-        }
-        return false;
-    }
+export interface reportInt {
+    getReportByDate(date: Date, report: Report): boolean;
 }

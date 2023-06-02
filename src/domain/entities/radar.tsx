@@ -12,11 +12,8 @@ export class Radar {
         this.speedThreshold = speedThreshold;
         this.reports = reports;
     }
+}
 
-    public getAllReportsFromDate(date: Date): Report[] {
-        var reports: Report[] = [];
-
-        reports = this.reports.filter(report => report.getReportByDate(date));
-        return reports;
-    }
+export interface radarInt {
+    getAllReportsFromDate(date: Date, radar: Radar): Report[];
 }
