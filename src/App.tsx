@@ -10,6 +10,7 @@ function App() {
   const reports:Report[][] = []
   const reportArray:Report[] = []
   const [date, setDate] = useState(0) 
+  const [reportArrayState, setReportArrayState] = useState(new Array)
 
   const jsonAdapter = new JsonAdapter();
   const radarMethod = new RadarMethod()
@@ -28,6 +29,7 @@ function App() {
         reports.forEach(report => {
           report.forEach(reportItem => {
             reportArray.push(reportItem);
+            setReportArrayState(reportArray)
           })
         });
       });
@@ -42,6 +44,27 @@ function App() {
           setDate(input.target.valueAsNumber)
         }}/>
         <button type='button' onClick={() => handleValid()}>Valider</button>
+        {reportArrayState.length != 0 && 
+        <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Vitesse autorisée</th>
+                <th>Plaque d'immatriculation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reportArrayState.map(report => {
+               return <tr>
+                        <td>{report.date.getDate()}/{report.date.getMonth()+1 < 10 ? ""+report.date.getMonth()+1 : report.date.getMonth()}/{report.date.getFullYear()}</td>
+                        <td>{report.speed}</td>
+                        <td>{report.vehicle.licensePlate}</td>
+                      </tr>
+              })}
+            </tbody>
+        </table>
+        }
+        
       </header>
     </div>
   );
