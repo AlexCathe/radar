@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
-import { JsonAdapter } from './adapters/jsonAdapter';
-import { Radar } from './entities/radar';
+import { JsonAdapter } from './infrastructure/adapters/jsonAdapter';
+import { Radar } from './domain/entities/radar';
+import { Report } from './domain/entities/report';
+import { RadarMethod } from './infrastructure/method/radarMethod';
 import { setConstantValue } from 'typescript';
-import { Report } from './entities/report';
 import { PdfGenerator } from './infra/PdfGenerator';
 
 function App() {
@@ -13,8 +13,11 @@ function App() {
   const reportArray:Report[] = []
   const [date, setDate] = useState(0) 
 
-  if(JsonAdapter.getDatasFromJson() != undefined){
-    radars = JsonAdapter.getDatasFromJson();
+  const jsonAdapter = new JsonAdapter();
+  const radarMethod = new RadarMethod()
+
+  if(jsonAdapter.getAllRadar() != undefined){
+    radars = jsonAdapter.getAllRadar();
   };
 
   const handleValid = () => {
@@ -22,32 +25,24 @@ function App() {
     const reportArray:Report[] = []
     if(radars){
       const reportDate = new Date(date)
-      radars = radars.filter((radar) => radar != null)
       radars.forEach(radar => {
-        reports.push(radar.getAllReportsFromDate(reportDate))
+        reports.push(radarMethod.getAllReportsFromDate(reportDate, radar))
         reports.forEach(report => {
           report.forEach(reportItem => {
             reportArray.push(reportItem);
           })
-          
         });
       });
     }
     console.log(reportArray)
-    /*const fs = require('fs');
-    //const {parseString, Builder} = require('xml2json');
+   /* const fs = require('fs');
+    const {parseString, Builder} = require('xml2json');
     
     const dataXml = fs.readFileSync('./data/radar.xml').toString();
     parseString(dataXml, function(err: Object, data: Object) {
       console.dir(data)
     })*/
   };
-
-    
-    // XmlChecker.checkXmlFormat(dataXml)
-
-  
-  
   
   return (
     <div className="App">
