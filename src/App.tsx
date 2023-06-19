@@ -5,7 +5,7 @@ import { JsonAdapter } from './adapters/jsonAdapter';
 import { Radar } from './entities/radar';
 import { setConstantValue } from 'typescript';
 import { Report } from './entities/report';
-import { XmlChecker } from './checker/XmlChecker';
+import { PdfGenerator } from './infra/PdfGenerator';
 
 function App() {
   var radars:Array<Radar>
@@ -34,13 +34,13 @@ function App() {
       });
     }
     console.log(reportArray)
-    const fs = require('fs');
-    const {parseString, Builder} = require('xml2json');
+    /*const fs = require('fs');
+    //const {parseString, Builder} = require('xml2json');
     
     const dataXml = fs.readFileSync('./data/radar.xml').toString();
     parseString(dataXml, function(err: Object, data: Object) {
       console.dir(data)
-    })
+    })*/
   };
 
     
@@ -56,6 +56,7 @@ function App() {
           setDate(input.target.valueAsNumber)
         }}/>
         <button type='button' onClick={() => handleValid()}>Valider</button>
+        <PdfGenerator></PdfGenerator>
       </header>
     </div>
   );
