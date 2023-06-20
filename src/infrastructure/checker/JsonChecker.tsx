@@ -1,4 +1,4 @@
-import { Radar } from "../../domain/entities/radar";
+import { Radar } from "../../domain/entities/Radar";
 import { AwesomeRadarFormat } from "../format/AwesomeRadarFormat"
 import { B612Format } from "../format/B612Format";
 

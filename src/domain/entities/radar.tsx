@@ -1,4 +1,4 @@
-import { Report } from "./report";
+import { Report } from "./Report";
 
 export class Radar {
     name: string|null;
@@ -16,4 +16,5 @@ export class Radar {
 
 export interface radarInt {
     getAllReportsFromDate(date: Date, radar: Radar): Report[];
+    getAllReportsFromMonth(date: Date, radar: Radar): Report[];
 }

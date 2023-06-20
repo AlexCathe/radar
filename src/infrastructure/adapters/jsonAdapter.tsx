@@ -1,4 +1,4 @@
-import { Radar } from '../../domain/entities/radar';
+import { Radar } from '../../domain/entities/Radar';
 import * as data from '../data/radar2.json';
 import * as data2 from '../data/radar.json';
 import { JsonChecker } from '../checker/JsonChecker';

@@ -1,4 +1,4 @@
-import { Radar } from "../../domain/entities/radar";
+import { Radar } from "../../domain/entities/Radar";
 
 export class XmlChecker {
     static checkXmlFormat(data: string) {

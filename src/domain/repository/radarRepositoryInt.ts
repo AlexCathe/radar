@@ -1,4 +1,4 @@
-import { Radar } from "../entities/radar";
+import { Radar } from "../entities/Radar";
 
 export interface radarRepositoryInt {
     getAllRadar(): Array<Radar>;

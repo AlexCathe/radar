@@ -1,6 +1,6 @@
-import { Radar } from "../../domain/entities/radar";
-import { Report } from "../../domain/entities/report";
-import { Vehicle } from "../../domain/entities/vehicle";
+import { Radar } from "../../domain/entities/Radar";
+import { Report } from "../../domain/entities/Report";
+import { Vehicle } from "../../domain/entities/Vehicle";
 
 export class B612Format {
     static formatJson(data: string): Radar {

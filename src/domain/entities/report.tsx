@@ -1,4 +1,4 @@
-import { Vehicle } from "./vehicle";
+import { Vehicle } from "./Vehicle";
 
 export class Report {
     speed: number|null;
@@ -16,4 +16,5 @@ export class Report {
 
 export interface reportInt {
     getReportByDate(date: Date, report: Report): boolean;
+    getReportByMonth(date: Date, report: Report): boolean
 }
